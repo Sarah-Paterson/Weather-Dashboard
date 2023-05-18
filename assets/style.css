@@ -1,11 +1,50 @@
+:root {
+    /*colors*/
+    --background-color: rgb(255, 242, 189);
+    --white: rgb(255, 255, 255);
+    --dark-rust: rgb(137, 54, 32);
+    --dark-orange: rgb(183, 78, 0);
+    --orange: rgb(252, 115, 0);
+    --text-color-dark: rgb(81, 30, 20);
+    --text-color-medium: rgb(137, 54, 32);
+    --text-color-light: rgb(255, 242, 189);
+    --orange-gradient: linear-gradient(var(--orange), var(--dark-orange));
+    --orange-gradient-hover: linear-gradient(var(--dark-orange), var(--text-color-dark));
+
+
+    /*font sizes for desktop and bigger*/
+    --font-size-body: 20px;
+    --font-size-h3: 32px;
+    --font-size-h2: 38px;
+    --font-size-name: 88px;
+
+    /*font sizes for tablet*/
+    --tablet-font-size-body: 20px;
+    --tablet-font-size-h3: 25px;
+    --tablet-font-size-h2: 32px;
+    --tablet-font-size-name: 75px;
+
+    /*font sizes for phone*/
+    --phone-font-size-body: 20px;
+    --phone-font-size-h3: 22px;
+    --phone-font-size-h2: 25px;
+    --phone-font-size-name: 40px;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
+    background-color: var(--background-color);
+}
+
+#hero {
+    background-image: var(--orange-gradient);
 }
 
 #hero-text {
     font-weight: 300;
     font-size: 100px;
+    color: var(--text-color-light);
 }
   
 h1,
@@ -15,4 +54,43 @@ h4,
 h5,
 h6 {
     text-align: center;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+.dark-text {
+    color: var(--text-color-dark);
+    font-weight: 700;
+}
+
+#city-input {
+    background-color: var(--background-color);
+    color: var(--text-color-dark);
+    outline: solid var(--dark-rust);
+    font-weight: 600;
+}
+
+.btn {
+    font-weight: 600;
+    border-radius: 5px;
+    outline: solid var(--dark-orange);
+    font-size: 30px;
+}
+
+.btn:hover {
+    background-image: var(--orange-gradient-hover);
+    color: var(--text-color-light);
+    outline: solid var(--text-color-dark);
+}
+
+.search-btn {
+    background-image: var(--orange-gradient);
+    color: var(--text-color-light);
+}
+
+.recient-btn {
+    background-color: var(--background-color);
+    color: var(--text-color-medium);
 }
