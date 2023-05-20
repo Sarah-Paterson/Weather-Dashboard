@@ -37,7 +37,7 @@ body {
     background-color: var(--background-color);
 }
 
-#hero {
+.hero {
     background-image: var(--orange-gradient);
 }
 
@@ -56,13 +56,18 @@ h6 {
     text-align: center;
 }
 
+h2 {
+    font-size: 25px;
+    font-weight: 700;
+
+}
+
 h3 {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .dark-text {
     color: var(--text-color-dark);
-    font-weight: 700;
 }
 
 #city-input {
@@ -76,7 +81,7 @@ h3 {
     font-weight: 600;
     border-radius: 5px;
     outline: solid var(--dark-orange);
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .btn:hover {
@@ -93,4 +98,26 @@ h3 {
 .recient-btn {
     background-color: var(--background-color);
     color: var(--text-color-medium);
+}
+
+.weather {
+    border: solid 10px var(--orange);
+    border-radius: 5px;
+}
+
+.weather-info {
+    color: var(--text-color-medium);
+    font-weight: 600;
+}
+
+.weather-five-day-name {
+    color: var(--dark-rust);
+}
+
+.five-day {
+    background-image: var(--orange-gradient);
+    border-radius: 5px;
+    color: var(--text-color-light);
+    font-size: 15px;
+    font-weight: 600;
 }

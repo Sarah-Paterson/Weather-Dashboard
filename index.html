@@ -24,19 +24,19 @@
     </head>
     <body>
 
-        <div id="hero" class="px-4 py-5 mb-5">
+          <header class="hero">
             <div class="container text-center">
               <h1 id="hero-text">Weather Dashboard</h1>
             </div>
-          </div>
+          </header>
           <div class="container">
             <div class="row">
               <!-- search for city section -->
               <div class="col-3">
-                <h3 class="dark-text">Search for a City:</h3>
+                <h2 class="dark-text">Search for a City:</h2>
                 <form id="search-form">
                   <!-- city input -->
-                  <div class="row py-3">
+                  <div class=" py-3">
                     <div class="col-sm-8">
                       <input type="text" class="row form-control" id="city-input" aria-label="city-input"/>
                     </div>
@@ -46,14 +46,53 @@
                     <button type="search" value="search" class="btn search-btn">
                       Search
                     </button>
-                    <button class="py-3 my-3 btn recient-btn"></button>
+                    <button class="py-1 my-3 btn recient-btn">Prev City</button>
                   </div>
                 </form>
               </div>
               <div class="col-9">
                 <!-- Weather Info -->
-                <div class="py-3">
-                  <ul id="weather-info"></ul>
+                <div class="weather py-3">
+                  <h2 class="weather-city-name dark-text">City Name</h2>
+                  <h3 class="weather-info">Temperature   Wind   Humidity</h3>
+                </div>
+                <div class="weather-five-day py-3 row">
+                  <h2 class="weather-five-day-name">5-Day Forcast:</h2>
+                  <div class="five-day col-2 py-1 my-3 mx-2">
+                    <p>9/14/2022</p>
+                    <i>icon</i>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>
+                  </div>
+                  <div class="five-day col-2 py-1 my-3 mx-2">
+                    <p>9/14/2022</p>
+                    <i>icon</i>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>
+                  </div>
+                  <div class="five-day col-2 py-1 my-3 mx-2">
+                    <p>9/14/2022</p>
+                    <i>icon</i>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>
+                  </div>
+                  <div class="five-day col-2 py-1 my-3 mx-2">
+                    <p>9/14/2022</p>
+                    <i>icon</i>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>
+                  </div>
+                  <div class="five-day col-2 py-1 my-3 mx-2">
+                    <p>9/14/2022</p>
+                    <i>icon</i>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>
+                  </div>
                 </div>
               </div>
             </div>
