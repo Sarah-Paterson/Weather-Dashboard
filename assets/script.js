@@ -15,6 +15,9 @@ let cityHumidity = document.querySelector('.weather-info');
 
 let weatherAPIKey = "a95ea5d3ddbfadaa4adff8073064743f";
 let city;
+let cityInfo;
+let latatude;
+let longitude;
 
 searchButton.addEventListener("click", searchCitySubmit);
 
@@ -33,13 +36,29 @@ function searchCitySubmit(event) {
 function searchCityApi() {
     fetch ("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + weatherAPIKey)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        cityInfo = data;
+    })
+    .then(() => {
+        console.log(cityInfo);
+        localStorage.setItem(city, JSON.stringify(cityInfo))
+    })
 
-.catch(err => alert("Please enter the name of a city."))
+    .catch(err => alert("Please enter the name of a city."))
+
+    latatude = cityInfo[0];
+    // longitude = cityInfo[0][lon];
+    testing();
+    
 };
 
-function searchCityApi() {
-    fetch ("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + weatherAPIKey)
+function testing() {
+    console.log(latatude);
+    console.log(longitude);
+}
+
+function searchWeatherApi() {
+    fetch ("https://api.openweathermap.org/data/2.5/weather?lat=" + latatude + "&lon=" + longitude + "&appid=" + weatherAPIKey)
     .then(response => response.json())
     .then(data => console.log(data))
 
