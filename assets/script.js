@@ -16,6 +16,7 @@ let cityHumidity = document.querySelector('.weather-info');
 let weatherAPIKey = "a95ea5d3ddbfadaa4adff8073064743f";
 let city;
 let cityInfo;
+let cityInfoParse;
 let latatude;
 let longitude;
 
@@ -41,28 +42,25 @@ function searchCityApi() {
     })
     .then(() => {
         console.log(cityInfo);
-        localStorage.setItem(city, JSON.stringify(cityInfo))
+        localStorage.setItem(city, JSON.stringify(cityInfo));
+        latatude = cityInfo[0]["lat"];
+        longitude = cityInfo[0]["lon"];
+        console.log(latatude);
+        console.log(longitude);
+
+        searchWeatherNowApi();
     })
 
     .catch(err => alert("Please enter the name of a city."))
-
-    latatude = cityInfo[0];
-    // longitude = cityInfo[0][lon];
-    testing();
     
 };
 
-function testing() {
-    console.log(latatude);
-    console.log(longitude);
-}
-
-function searchWeatherApi() {
+function searchWeatherNowApi() {
     fetch ("https://api.openweathermap.org/data/2.5/weather?lat=" + latatude + "&lon=" + longitude + "&appid=" + weatherAPIKey)
     .then(response => response.json())
     .then(data => console.log(data))
 
-.catch(err => alert("Please enter the name of a city."))
+.catch(err => alert("welp this didn't work"))
 };
 
 // function searchCityApi() {
