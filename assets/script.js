@@ -74,6 +74,7 @@ searchButton.addEventListener("click", searchCitySubmit);
 recientButton.addEventListener("click", cityReSubmit);
 
 function searchCitySubmit(event) {
+    clean()
     event.preventDefault();
     city = document.querySelector('#city-input').value;
     if (!city) {
@@ -109,11 +110,11 @@ function searchCityApi() {
         console.log(latatude);
         console.log(longitude);
 
-        let cityButton = document.createElement("button");
+        // let cityButton = document.createElement("button");
         
-        cityButton.className = "py-1 my-2 btn recient-btn";
-        cityButton.textContent = localStorage.key(0);
-        buttonContainer.appendChild(cityButton);
+        // cityButton.className = "py-1 my-2 btn recient-btn";
+        // cityButton.textContent = localStorage.key(0);
+        // buttonContainer.appendChild(cityButton);
 
         searchWeatherNowApi();
     })
@@ -388,3 +389,12 @@ function applyCityInformationFiveDay() {
     dayFiveContainerElement.appendChild(cityDayFiveWind);
     dayFiveContainerElement.appendChild(cityDayFiveHumidity);
 }
+
+function clean(){
+    weatherTodayElement.innerHTML='';
+    dayOneContainerElement.innerHTML='';
+    dayTwoContainerElement.innerHTML='';
+    dayThreeContainerElement.innerHTML='';
+    dayFourContainerElement.innerHTML='';
+    dayFiveContainerElement.innerHTML='';
+  }
