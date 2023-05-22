@@ -3,6 +3,8 @@ let weatherContainerElement = document.querySelector('#weater-container');
 let weatherTodayElement = document.querySelector('#weater-today');
 let fiveDayContainerElement = document.querySelector('#five-day-container');
 let searchButton = document.querySelector('#search-btn');
+let buttonContainer = document.querySelector('#button-container');
+let recientButton;
 
 let cityName = document.querySelector('.weather-city-name');
 let cityTemperature = document.querySelector('.weather-info');
@@ -52,13 +54,27 @@ let dayFiveTemp;
 let dayFiveWind;
 let dayFiveHumidity;
 
+previousCityButtton()
+
 searchButton.addEventListener("click", searchCitySubmit);
+recientButton.addEventListener("click", cityReSubmit);
 
 function searchCitySubmit(event) {
     event.preventDefault();
     city = document.querySelector('#city-input').value;
     if (!city) {
       alert('Please enter the name of a city.');
+      return;
+    }
+    console.log(city);
+    searchCityApi(city);
+};
+
+function cityReSubmit(event) {
+    event.preventDefault();
+    city = recientButton.textContent;
+    if (!city) {
+      alert('This did not work... reload please!');
       return;
     }
     console.log(city);
@@ -78,6 +94,12 @@ function searchCityApi() {
         longitude = cityInfo[0]["lon"];
         console.log(latatude);
         console.log(longitude);
+
+        let cityButton = document.createElement("button");
+        
+        cityButton.className = "py-1 my-2 btn recient-btn";
+        cityButton.textContent = localStorage.key(0);
+        buttonContainer.appendChild(cityButton);
 
         searchWeatherNowApi();
     })
@@ -180,3 +202,14 @@ function searchWeatherFiveDaysApi() {
 .catch(err => alert("Can't believe it stopped here. Please reset."))
 }
 
+function previousCityButtton() {
+    for (let i = 0; i < localStorage.length; i++) {
+
+        let cityButton = document.createElement("button");
+        recientButton = document.querySelector('.recient-btn');
+        
+        cityButton.className = "py-1 my-2 btn recient-btn";
+        cityButton.textContent = localStorage.key(i);
+        buttonContainer.appendChild(cityButton);
+    }
+}

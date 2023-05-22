@@ -100,7 +100,7 @@ h3 {
     color: var(--text-color-medium);
 }
 
-.weather {
+#weather-today {
     border: solid 10px var(--orange);
     border-radius: 5px;
 }
