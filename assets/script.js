@@ -81,18 +81,17 @@ function searchCitySubmit(event) {
       alert('Please enter the name of a city.');
       return;
     }
-    console.log(city);
     searchCityApi(city);
 };
 
 function cityReSubmit(event) {
+    clean();
     event.preventDefault();
     city = recientButton.textContent;
     if (!city) {
       alert('This did not work... reload please!');
       return;
     }
-    console.log(city);
     searchCityApi(city);
 };
 
@@ -103,12 +102,9 @@ function searchCityApi() {
         cityInfo = data;
     })
     .then(() => {
-        console.log(cityInfo);
         localStorage.setItem(city, JSON.stringify(cityInfo));
         latatude = cityInfo[0]["lat"];
         longitude = cityInfo[0]["lon"];
-        console.log(latatude);
-        console.log(longitude);
 
         // let cityButton = document.createElement("button");
         
@@ -133,17 +129,12 @@ function searchWeatherNowApi() {
         console.log(cityWeatherNow);
         // localStorage.setItem(city, JSON.stringify(cityWeatherNow));
 
-        console.log(todayDate);
         todayIcon = cityWeatherNow["weather"][0]["icon"];
-        console.log(todayIcon);
         todayIconURL = "http://openweathermap.org/img/w/" + todayIcon + ".png";
-        console.log(todayIconURL)
         todayTemp = "Temperature: " + cityWeatherNow["main"]["temp"] + "° F";
-        console.log(todayTemp);
         todayWind = "Wind: " + cityWeatherNow["wind"]["speed"] + " MPH";
-        console.log(todayWind);
         todayHumidity = "Humidity: " + cityWeatherNow["main"]["humidity"] + "%";
-        console.log(todayHumidity);
+
         searchWeatherFiveDaysApi();
         applyCityInformation()
     })
@@ -158,73 +149,42 @@ function searchWeatherFiveDaysApi() {
         cityWeatherFiveDays = data;
     })
     .then(() => {
-        console.log(cityWeatherFiveDays);
         // localStorage.setItem(city, JSON.stringify(cityWeatherFiveDays));
 
         dayOneDate = dayjs(cityWeatherFiveDays["list"][2]["dt_txt"]).format("M/D/YYYY");
-        console.log(dayOneDate);
         dayOneIcon = cityWeatherFiveDays["list"][2]["weather"][0]["icon"];
-        console.log(dayOneIcon);
         dayOneIconURL = "http://openweathermap.org/img/w/" + dayOneIcon + ".png";
-        console.log(dayOneIconURL);
         dayOneTemp = "Temp: " + cityWeatherFiveDays["list"][2]["main"]["temp"] + "° F";
-        console.log(dayOneTemp);
         dayOneWind = "Wind: " + cityWeatherFiveDays["list"][2]["wind"]["speed"] + " MPH";
-        console.log(dayOneWind);
         dayOneHumidity = "Humidity: " + cityWeatherFiveDays["list"][2]["main"]["humidity"] + "%";
-        console.log(dayOneHumidity);
 
         dayTwoDate = dayjs(cityWeatherFiveDays["list"][10]["dt_txt"]).format("M/D/YYYY");
-        console.log(dayTwoDate);
         dayTwoIcon = cityWeatherFiveDays["list"][10]["weather"][0]["icon"];
-        console.log(dayTwoIcon);
         dayTwoIconURL = "http://openweathermap.org/img/w/" + dayTwoIcon + ".png";
-        console.log(dayTwoIconURL);
         dayTwoTemp = "Temp: " + cityWeatherFiveDays["list"][10]["main"]["temp"] + "° F";
-        console.log(dayTwoTemp);
         dayTwoWind = "Wind: " + cityWeatherFiveDays["list"][10]["wind"]["speed"] + " MPH";
-        console.log(dayTwoWind);
         dayTwoHumidity = "Humidity: " + cityWeatherFiveDays["list"][10]["main"]["humidity"] + "%";
-        console.log(dayTwoHumidity);
 
         dayThreeDate = dayjs(cityWeatherFiveDays["list"][18]["dt_txt"]).format("M/D/YYYY");
-        console.log(dayThreeDate);
         dayThreeIcon = cityWeatherFiveDays["list"][18]["weather"][0]["icon"];
-        console.log(dayThreeIcon);
         dayThreeIconURL = "http://openweathermap.org/img/w/" + dayThreeIcon + ".png";
-        console.log(dayThreeIconURL);
         dayThreeTemp = "Temp: " + cityWeatherFiveDays["list"][18]["main"]["temp"] + "° F";
-        console.log(dayThreeTemp);
         dayThreeWind = "Wind: " + cityWeatherFiveDays["list"][18]["wind"]["speed"] + " MPH";
-        console.log(dayThreeWind);
         dayThreeHumidity = "Humidity: " + cityWeatherFiveDays["list"][18]["main"]["humidity"] + "%";
-        console.log(dayThreeHumidity);
 
         dayFourDate = dayjs(cityWeatherFiveDays["list"][26]["dt_txt"]).format("M/D/YYYY");
-        console.log(dayFourDate);
         dayFourIcon = cityWeatherFiveDays["list"][26]["weather"][0]["icon"];
-        console.log(dayFourIcon);
         dayFourIconURL = "http://openweathermap.org/img/w/" + dayFourIcon + ".png";
-        console.log(dayFourIconURL);
         dayFourTemp = "Temp: " + cityWeatherFiveDays["list"][26]["main"]["temp"] + "° F";
-        console.log(dayFourTemp);
         dayFourWind = "Wind: " + cityWeatherFiveDays["list"][26]["wind"]["speed"] + " MPH";
-        console.log(dayFourWind);
         dayFourHumidity = "Humidity: " + cityWeatherFiveDays["list"][26]["main"]["humidity"] + "%";
-        console.log(dayFourHumidity);
 
         dayFiveDate = dayjs(cityWeatherFiveDays["list"][34]["dt_txt"]).format("M/D/YYYY");
-        console.log(dayFiveDate);
         dayFiveIcon = cityWeatherFiveDays["list"][34]["weather"][0]["icon"];
-        console.log(dayFiveIcon);
         dayFiveIconURL = "http://openweathermap.org/img/w/" + dayFiveIcon + ".png";
-        console.log(dayFiveIconURL);
         dayFiveTemp = "Temp: " + cityWeatherFiveDays["list"][34]["main"]["temp"] + "° F";
-        console.log(dayFiveTemp);
         dayFiveWind = "Wind: " + cityWeatherFiveDays["list"][34]["wind"]["speed"] + " MPH";
-        console.log(dayFiveWind);
         dayFiveHumidity = "Humidity: " + cityWeatherFiveDays["list"][34]["main"]["humidity"] + "%";
-        console.log(dayFiveHumidity);
 
         applyCityInformationFiveDay();
     })
