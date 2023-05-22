@@ -244,9 +244,7 @@ function previousCityButtton() {
 }
 
 function applyCityInformation() {
-    // let cityToday = document.createElement("div");
-    // cityToday.className = "py-3";
-    // cityToday.setAttribute("id", "weather-today");
+    weatherTodayElement.classList.remove("hide");
 
     let cityTodayName = document.createElement("h2");
     cityTodayName.className = "weather-city-name dark-text";
@@ -268,22 +266,9 @@ function applyCityInformation() {
 }
 
 function applyCityInformationFiveDay() {
-    // let forcastName = document.createElementNS("h2");
-    // forcastName.className = "weather-five-day-name";
-    // forcastName.textContent = "5-Day Forcast:";
-    // fiveDayContainerElement.appendChild(forcastName);
     fiveDayForcastElement.classList.remove("hide");
 
-    // firstDayFunction();
-    // secondDayFunction();
-    // thirdDayFunction();
-    // fourthDayFunction();
-    // fifthDayFunction();
-
     // day one container and info
-    // let dayOneContainer = document.createElementNS("div");
-    // dayOneContainer.className = "five-day col-2 py-1 my-3 mx-2 text-center";
-    // fiveDayContainerElement.appendChild(dayOneContainer);
     dayOneContainerElement.classList.remove("hide");
 
     let citydayOneDate = document.createElement("p");
@@ -308,9 +293,6 @@ function applyCityInformationFiveDay() {
     dayOneContainerElement.appendChild(cityDayOneHumidity);
 
     // day two container and info
-    // let dayTwoContainer = document.createElementNS("div");
-    // dayTwoContainer.className = "five-day col-2 py-1 my-3 mx-2 text-center";
-    // fiveDayContainerElement.appendChild(dayTwoContainer);
     dayTwoContainerElement.classList.remove("hide");
 
     let citydayTwoDate = document.createElement("p");
@@ -335,9 +317,6 @@ function applyCityInformationFiveDay() {
     dayTwoContainerElement.appendChild(cityDayTwoHumidity);
 
     // day three container and info
-    // let dayThreeContainer = document.createElementNS("div");
-    // dayThreeContainer.className = "five-day col-2 py-1 my-3 mx-2 text-center";
-    // fiveDayContainerElement.appendChild(dayThreeContainer);
     dayThreeContainerElement.classList.remove("hide");
 
     let citydayThreeDate = document.createElement("p");
@@ -362,9 +341,6 @@ function applyCityInformationFiveDay() {
     dayThreeContainerElement.appendChild(cityDayThreeHumidity);
 
     // day four container and info
-    // let dayFourContainer = document.createElementNS("div");
-    // dayFourContainer.className = "five-day col-2 py-1 my-3 mx-2 text-center";
-    // fiveDayContainerElement.appendChild(dayFourContainer);
     dayFourContainerElement.classList.remove("hide");
 
     let citydayFourDate = document.createElement("p");
@@ -389,9 +365,6 @@ function applyCityInformationFiveDay() {
     dayFourContainerElement.appendChild(cityDayFourHumidity);
 
     // day five container and info
-    // let dayFiveContainer = document.createElementNS("div");
-    // dayFiveContainer.className = "five-day col-2 py-1 my-3 mx-2 text-center";
-    // fiveDayContainerElement.appendChild(dayFiveContainer);
     dayFiveContainerElement.classList.remove("hide");
 
     let citydayFiveDate = document.createElement("p");
