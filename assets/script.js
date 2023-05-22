@@ -1,6 +1,6 @@
 let cityInputElement = document.querySelector('#city-input');
 let weatherContainerElement = document.querySelector('#weater-container');
-let weatherTodayElement = document.querySelector('#weater-today');
+let weatherTodayElement = document.querySelector('#weather-today');
 let fiveDayContainerElement = document.querySelector('#five-day-container');
 let searchButton = document.querySelector('#search-btn');
 let buttonContainer = document.querySelector('#button-container');
@@ -20,6 +20,7 @@ let longitude;
 
 let todayDate = dayjs().format("M/D/YYYY");
 let todayIcon;
+let todayIconURL;
 let todayTemp;
 let todayWind;
 let todayHumidity;
@@ -55,6 +56,7 @@ let dayFiveWind;
 let dayFiveHumidity;
 
 previousCityButtton()
+
 
 searchButton.addEventListener("click", searchCitySubmit);
 recientButton.addEventListener("click", cityReSubmit);
@@ -121,6 +123,8 @@ function searchWeatherNowApi() {
         console.log(todayDate);
         todayIcon = cityWeatherNow["weather"][0]["icon"];
         console.log(todayIcon);
+        todayIconURL = "http://openweathermap.org/img/w/" + todayIcon + ".png";
+        console.log(todayIconURL)
         todayTemp = "Temperature: " + cityWeatherNow["main"]["temp"] + "° F";
         console.log(todayTemp);
         todayWind = "Wind: " + cityWeatherNow["wind"]["speed"] + " MPH";
@@ -128,6 +132,7 @@ function searchWeatherNowApi() {
         todayHumidity = "Humidity: " + cityWeatherNow["main"]["humidity"] + "%";
         console.log(todayHumidity);
         searchWeatherFiveDaysApi();
+        applyCityInformation()
     })
 
 .catch(err => alert("Welp this didn't work. Please refresh."))
@@ -212,4 +217,27 @@ function previousCityButtton() {
         cityButton.textContent = localStorage.key(i);
         buttonContainer.appendChild(cityButton);
     }
+}
+
+function applyCityInformation() {
+    // let cityToday = document.createElement("div");
+    // cityToday.className = "py-3";
+    // cityToday.setAttribute("id", "weather-today");
+
+    let cityTodayName = document.createElement("h2");
+    cityTodayName.className = "weather-city-name dark-text";
+    cityTodayName.textContent = city + "    -   " + todayDate;
+
+    let cityTodayIcon = document.createElement("img");
+    cityTodayIcon.setAttribute("id", "icon")
+    cityTodayIcon.setAttribute("src", todayIconURL);
+
+    let cityTodayInfo = document.createElement("h3")
+    cityTodayInfo.className = "weather-info";
+    cityTodayInfo.textContent = todayTemp + "    -    " + todayWind + "    -    " + todayHumidity;
+    
+    // weatherContainerElement.appendChild(cityToday);
+    weatherTodayElement.appendChild(cityTodayName);
+    weatherTodayElement.appendChild(cityTodayIcon);
+    weatherTodayElement.appendChild(cityTodayInfo);
 }
