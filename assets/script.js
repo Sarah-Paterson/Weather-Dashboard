@@ -2,8 +2,9 @@ let cityInputElement = document.querySelector('#city-input');
 let weatherContainerElement = document.querySelector('#weater-container');
 let weatherTodayElement = document.querySelector('#weather-today');
 let searchButton = document.querySelector('#search-btn');
-let buttonContainer = document.querySelector('#button-container');
-let recientButton;
+let buttonContainer = document.querySelector('#prev-button-container');
+
+let recentSearchHistory = [];
 
 let fiveDayContainerElement = document.querySelector('#five-day-container');
 let fiveDayForcastElement = document.querySelector('#five-day-forcast');
@@ -71,10 +72,10 @@ previousCityButtton()
 
 
 searchButton.addEventListener("click", searchCitySubmit);
-recientButton.addEventListener("click", cityReSubmit);
+buttonContainer.addEventListener("click", cityReSubmit);
 
 function searchCitySubmit(event) {
-    clean()
+    clean();
     event.preventDefault();
     city = document.querySelector('#city-input').value;
     if (!city) {
@@ -87,12 +88,15 @@ function searchCitySubmit(event) {
 function cityReSubmit(event) {
     clean();
     event.preventDefault();
-    city = recientButton.textContent;
-    if (!city) {
-      alert('This did not work... reload please!');
-      return;
+    let element = event.target
+    if (element.matches("button") === true) {
+        city = event.srcElement.innerText;
+        if (!city) {
+          alert('This did not work... reload please!');
+          return;
+        }
+        searchCityApi(city);
     }
-    searchCityApi(city);
 };
 
 function searchCityApi() {
@@ -106,11 +110,7 @@ function searchCityApi() {
         latatude = cityInfo[0]["lat"];
         longitude = cityInfo[0]["lon"];
 
-        // let cityButton = document.createElement("button");
-        
-        // cityButton.className = "py-1 my-2 btn recient-btn";
-        // cityButton.textContent = localStorage.key(0);
-        // buttonContainer.appendChild(cityButton);
+        previousCityButtton();
 
         searchWeatherNowApi();
     })
@@ -126,8 +126,6 @@ function searchWeatherNowApi() {
         cityWeatherNow = data;
     })
     .then(() => {
-        console.log(cityWeatherNow);
-        // localStorage.setItem(city, JSON.stringify(cityWeatherNow));
 
         todayIcon = cityWeatherNow["weather"][0]["icon"];
         todayIconURL = "http://openweathermap.org/img/w/" + todayIcon + ".png";
@@ -149,7 +147,6 @@ function searchWeatherFiveDaysApi() {
         cityWeatherFiveDays = data;
     })
     .then(() => {
-        // localStorage.setItem(city, JSON.stringify(cityWeatherFiveDays));
 
         dayOneDate = dayjs(cityWeatherFiveDays["list"][2]["dt_txt"]).format("M/D/YYYY");
         dayOneIcon = cityWeatherFiveDays["list"][2]["weather"][0]["icon"];
@@ -193,14 +190,16 @@ function searchWeatherFiveDaysApi() {
 }
 
 function previousCityButtton() {
+    buttonContainer.innerHTML = "";
+    
     for (let i = 0; i < localStorage.length; i++) {
 
         let cityButton = document.createElement("button");
-        recientButton = document.querySelector('.recient-btn');
-        
         cityButton.className = "py-1 my-2 btn recient-btn";
+        cityButton.setAttribute("data-city", localStorage.key(i));
         cityButton.textContent = localStorage.key(i);
         buttonContainer.appendChild(cityButton);
+        
     }
 }
 
@@ -219,7 +218,6 @@ function applyCityInformation() {
     cityTodayInfo.className = "weather-info";
     cityTodayInfo.textContent = todayTemp + "    -    " + todayWind + "    -    " + todayHumidity;
     
-    // weatherContainerElement.appendChild(cityToday);
     weatherTodayElement.appendChild(cityTodayName);
     weatherTodayElement.appendChild(cityTodayIcon);
     weatherTodayElement.appendChild(cityTodayInfo);

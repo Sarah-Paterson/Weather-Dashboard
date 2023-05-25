@@ -90,6 +90,8 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    background-color: var(--background-color);
+    border-radius: 50px;
 }
 
 .weather-info {
