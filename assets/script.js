@@ -100,7 +100,7 @@ function cityReSubmit(event) {
 };
 
 function searchCityApi() {
-    fetch ("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&units=imperial&appid=" + weatherAPIKey)
+    fetch ("https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&units=imperial&appid=" + weatherAPIKey)
     .then(response => response.json())
     .then(data => {
         cityInfo = data;
@@ -128,7 +128,7 @@ function searchWeatherNowApi() {
     .then(() => {
 
         todayIcon = cityWeatherNow["weather"][0]["icon"];
-        todayIconURL = "http://openweathermap.org/img/w/" + todayIcon + ".png";
+        todayIconURL = "https://openweathermap.org/img/w/" + todayIcon + ".png";
         todayTemp = "Temperature: " + cityWeatherNow["main"]["temp"] + "° F";
         todayWind = "Wind: " + cityWeatherNow["wind"]["speed"] + " MPH";
         todayHumidity = "Humidity: " + cityWeatherNow["main"]["humidity"] + "%";
@@ -150,35 +150,35 @@ function searchWeatherFiveDaysApi() {
 
         dayOneDate = dayjs(cityWeatherFiveDays["list"][2]["dt_txt"]).format("M/D/YYYY");
         dayOneIcon = cityWeatherFiveDays["list"][2]["weather"][0]["icon"];
-        dayOneIconURL = "http://openweathermap.org/img/w/" + dayOneIcon + ".png";
+        dayOneIconURL = "https://openweathermap.org/img/w/" + dayOneIcon + ".png";
         dayOneTemp = "Temp: " + cityWeatherFiveDays["list"][2]["main"]["temp"] + "° F";
         dayOneWind = "Wind: " + cityWeatherFiveDays["list"][2]["wind"]["speed"] + " MPH";
         dayOneHumidity = "Humidity: " + cityWeatherFiveDays["list"][2]["main"]["humidity"] + "%";
 
         dayTwoDate = dayjs(cityWeatherFiveDays["list"][10]["dt_txt"]).format("M/D/YYYY");
         dayTwoIcon = cityWeatherFiveDays["list"][10]["weather"][0]["icon"];
-        dayTwoIconURL = "http://openweathermap.org/img/w/" + dayTwoIcon + ".png";
+        dayTwoIconURL = "https://openweathermap.org/img/w/" + dayTwoIcon + ".png";
         dayTwoTemp = "Temp: " + cityWeatherFiveDays["list"][10]["main"]["temp"] + "° F";
         dayTwoWind = "Wind: " + cityWeatherFiveDays["list"][10]["wind"]["speed"] + " MPH";
         dayTwoHumidity = "Humidity: " + cityWeatherFiveDays["list"][10]["main"]["humidity"] + "%";
 
         dayThreeDate = dayjs(cityWeatherFiveDays["list"][18]["dt_txt"]).format("M/D/YYYY");
         dayThreeIcon = cityWeatherFiveDays["list"][18]["weather"][0]["icon"];
-        dayThreeIconURL = "http://openweathermap.org/img/w/" + dayThreeIcon + ".png";
+        dayThreeIconURL = "https://openweathermap.org/img/w/" + dayThreeIcon + ".png";
         dayThreeTemp = "Temp: " + cityWeatherFiveDays["list"][18]["main"]["temp"] + "° F";
         dayThreeWind = "Wind: " + cityWeatherFiveDays["list"][18]["wind"]["speed"] + " MPH";
         dayThreeHumidity = "Humidity: " + cityWeatherFiveDays["list"][18]["main"]["humidity"] + "%";
 
         dayFourDate = dayjs(cityWeatherFiveDays["list"][26]["dt_txt"]).format("M/D/YYYY");
         dayFourIcon = cityWeatherFiveDays["list"][26]["weather"][0]["icon"];
-        dayFourIconURL = "http://openweathermap.org/img/w/" + dayFourIcon + ".png";
+        dayFourIconURL = "https://openweathermap.org/img/w/" + dayFourIcon + ".png";
         dayFourTemp = "Temp: " + cityWeatherFiveDays["list"][26]["main"]["temp"] + "° F";
         dayFourWind = "Wind: " + cityWeatherFiveDays["list"][26]["wind"]["speed"] + " MPH";
         dayFourHumidity = "Humidity: " + cityWeatherFiveDays["list"][26]["main"]["humidity"] + "%";
 
         dayFiveDate = dayjs(cityWeatherFiveDays["list"][34]["dt_txt"]).format("M/D/YYYY");
         dayFiveIcon = cityWeatherFiveDays["list"][34]["weather"][0]["icon"];
-        dayFiveIconURL = "http://openweathermap.org/img/w/" + dayFiveIcon + ".png";
+        dayFiveIconURL = "https://openweathermap.org/img/w/" + dayFiveIcon + ".png";
         dayFiveTemp = "Temp: " + cityWeatherFiveDays["list"][34]["main"]["temp"] + "° F";
         dayFiveWind = "Wind: " + cityWeatherFiveDays["list"][34]["wind"]["speed"] + " MPH";
         dayFiveHumidity = "Humidity: " + cityWeatherFiveDays["list"][34]["main"]["humidity"] + "%";
